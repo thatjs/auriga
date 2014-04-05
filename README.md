@@ -1,4 +1,4 @@
 auriga
 ======
 
-ThatJs Auriga
+auriga - A Thatjs Project
