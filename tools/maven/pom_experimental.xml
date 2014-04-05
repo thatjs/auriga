@@ -1,0 +1,65 @@
+<plugin>
+  <groupId>com.github.klieber</groupId>
+  <artifactId>phantomjs-maven-plugin</artifactId>
+  <version>0.2.1</version>
+    <executions>
+      <execution>
+        <goals>
+          <goal>install</goal>
+        </goals>
+      </execution>
+    </executions>
+    <configuration>
+      <version>1.9.2</version>
+    </configuration>
+</plugin>
+
+<profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os>
+          <family>Windows</family>
+        </os>
+      </activation>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.4</version>
+            <executions>
+              <execution>
+                <id>copy-phantomjs</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>copy</goal>
+                </goals>
+                <configuration>
+                  <artifactItems>
+
+                    <artifactItem>
+                      <groupId>org.phantomjs</groupId>
+                      <artifactId>phantomjs</artifactId>
+                      <version>1.9.1</version>
+                      <classifier>win32</classifier>
+                      <type>exe</type>
+
+                      <overWrite>true</overWrite>
+                      <outputDirectory>${basedir}/tools</outputDirectory>
+                     <destFileName>phantomjs.exe</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+
+                  <outputDirectory>${project.build.directory}/tools</outputDirectory>
+                  <overWriteReleases>false</overWriteReleases>
+                  <overWriteSnapshots>true</overWriteSnapshots>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
