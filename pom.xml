@@ -15,11 +15,8 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>com.samaxes.maven</groupId>
-      <artifactId>maven-minify-plugin</artifactId>
-      <version>1.7.2</version>
-    </dependency>
+    <!-- minify-maven-plugin download binary. $ mvn install:install-file ... -->
+
   </dependencies>
   <build>
     <finalName>auriga</finalName>
