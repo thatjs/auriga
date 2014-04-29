@@ -1,5 +1,5 @@
 /*globals ElementMover, appendToContainer */
-describe('the ElementMover object', function () {
+xdescribe('the ElementMover object', function () {
 
     var rootId = 'testContainer';
 
