@@ -66,9 +66,9 @@
                 <configuration>
                     <charset>UTF-8</charset>
                     <jsEngine>CLOSURE</jsEngine>
-                    <jsSourceDir>src/main/webapp/js</jsSourceDir>
+                    <jsSourceDir>js/thatjs/main</jsSourceDir>
                     <jsSourceFiles>
-                        <jsSourceFile>thatjs/main/app.js</jsSourceFile>
+                        <jsSourceFile>app.js</jsSourceFile>
                     </jsSourceFiles>
                     <jsFinalFile>that.js</jsFinalFile>
                 </configuration>
@@ -88,6 +88,9 @@
                 <fileset>
                     <directory>src/main/webapp/css</directory>
                 </fileset>
+                <fileset dir="src/main/webapp/js/">
+                    <include name="*.js" />
+                </fileset>
             </filesets>
 
             <executions>
@@ -101,6 +104,30 @@
             </executions>
 
         </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+                <execution>
+                    <id>copy-js-output-files</id>
+                    <phase>process-resources</phase>
+                    <configuration>
+                        <target>
+                            <echo>Copy minified js files</echo>
+                            <copy todir="${basedir}/src/main/webapp/js">
+                                <fileset dir="${basedir}/target/auriga/js/thatjs/main">
+                                    <include name="*.js" />
+                                </fileset>
+                            </copy>
+                        </target>
+                    </configuration>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                </execution>
+            </executions>
       </plugin>
 
       <plugin>
