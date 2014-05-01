@@ -88,8 +88,11 @@
                 <fileset>
                     <directory>src/main/webapp/css</directory>
                 </fileset>
-                <fileset dir="src/main/webapp/js/">
-                    <include name="*.js" />
+                <fileset>
+                    <directory>src/main/webapp/js</directory>
+                    <includes>
+                        <include>*.js</include>
+                    </includes>
                 </fileset>
             </filesets>
 
