@@ -1,5 +1,4 @@
-// dev link /js/thatjs/main/app.js
-// prod /v1000/js/that.js - optimized, minified and compressed
+// ratings widget with incr/decr buttons
 
 // declare module name and dependencies = none
 angular.module('thatjs', [])
