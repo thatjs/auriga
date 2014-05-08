@@ -200,6 +200,29 @@
         </executions>
       </plugin>
 
+      <!-- not working yet, use mvn -X to debug -->
+      <!-- need to setup jasmine tests against the angularjs directives -->
+      <!-- <plugin> -->
+        <!-- <groupId>com.github.timurstrekalov</groupId> -->
+        <!-- <artifactId>saga-maven-plugin</artifactId> -->
+        <!-- <version>1.5.3</version> -->
+        <!-- <executions> -->
+            <!-- <execution> -->
+                <!-- <phase>verify</phase> -->
+                <!-- <goals> -->
+                    <!-- <goal>coverage</goal> -->
+                <!-- </goals> -->
+            <!-- </execution> -->
+        <!-- </executions> -->
+        <!-- <configuration> -->
+            <!-- <baseDir>${project.basedir}/target/jasmine</baseDir> -->
+            <!-- <includes> -->
+                <!-- **/*Runner.html -->
+            <!-- </includes> -->
+            <!-- <outputDir>${project.basedir}/target/coverage</outputDir> -->
+        <!-- </configuration> -->
+      <!-- </plugin> -->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
