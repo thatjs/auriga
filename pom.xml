@@ -140,7 +140,7 @@
         <configuration>
             <failOnError>true</failOnError>
             <options>
-                <predef>describe,it,xdescribe,xit,beforeEach,afterEach,expect</predef>
+                <predef>angular,describe,it,xdescribe,xit,beforeEach,afterEach,expect</predef>
                 <browser>true</browser>
                 <maxlen>120</maxlen>
                 <todo>true</todo>  <!-- Allow 'todo' comments in code -->
@@ -153,11 +153,12 @@
                 <regexp>true</regexp>  <!-- the . should be allowed in regexp literals -->
             </options>
             <sourceFolders>
-                <sourceFolder>src/main/javascript</sourceFolder>
-                <sourceFolder>src/test/javascript</sourceFolder>
+                <sourceFolder>src/main/webapp/js</sourceFolder>
+                <sourceFolder>src/test/js</sourceFolder>
             </sourceFolders>
             <excludes>
-                <!-- <exclude>data/filter/*.js</exclude> -->
+                <exclude>lib/**/*.js</exclude>
+                <exclude>that.min.js</exclude>
             </excludes>
             <outputFolder>target/jslint</outputFolder>
             <timeout>30</timeout>
