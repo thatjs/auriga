@@ -1,0 +1,19 @@
+{
+    "name": "Thatjs",
+    "description": "Thatjs Karma Test Runner",
+    "dependencies": {
+        "karma": "*",
+        "karma-jasmine": "*",
+        "karma-chrome-launcher": "*",
+        "karma-firefox-launcher": "*",
+        "karma-phantomjs-launcher": "*",
+        "karma-ie-launcher": "*",
+        "karma-safari-launcher": "*",
+        "karma-coverage": "*",
+        "karma-junit-reporter": "*",
+        "karma-cli": "*"
+    },
+    "engines": {
+        "node": "~0.8 || ~0.10"
+    }
+}
