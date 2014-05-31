@@ -15,8 +15,8 @@ angular.module('thatjs', [])
     .directive('twinTextarea', function () {
         return {
             restrict: 'A',
-			template: '<textarea class="col-4 js-src">tryme</textarea>' +
-        		'<textarea class="col-4 js-src js-test"></textarea>'            
+            template: '<textarea class="col-4 js-src">tryme</textarea>' +
+                '<textarea class="col-4 js-src js-test"></textarea>'
         };
     });
 
