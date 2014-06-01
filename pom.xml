@@ -15,9 +15,39 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- minify-maven-plugin download binary. $ mvn install:install-file ... -->
+    <!-- minify-maven-plugin download binary. -->
+    <!-- $ mvn install:install-file -->
+    <!--   -DgroupId=com.samaxes.maven -DartifactId=minify-maven-plugin -->
+	<!--   -Dversion=1.7.2 -Dpackaging=jar -->
+	<!--   -Dfile=/usr/local/src/maven/plugins/minify-maven-plugin-1.7.2.jar -->
 
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>windows</id>
+      <activation>
+        <os>
+          <family>windows</family>
+        </os>
+      </activation>
+      <properties>
+        <profileSamaxesVersion>1.7.2</profileSamaxesVersion>
+      </properties>
+    </profile>
+    <profile>
+      <id>linux</id>
+      <activation>
+        <os>
+          <family>unix</family>
+        </os>
+      </activation>
+      <properties>
+        <profileSamaxesVersion>1.6.2</profileSamaxesVersion>
+      </properties>
+    </profile>
+  </profiles>
+
   <build>
     <finalName>auriga</finalName>
 
@@ -59,7 +89,7 @@
       <plugin>
         <groupId>com.samaxes.maven</groupId>
         <artifactId>minify-maven-plugin</artifactId>
-        <version>1.7.2</version>
+        <version>${profileSamaxesVersion}</version>
         <executions>
             <execution>
                 <id>thatjs</id>

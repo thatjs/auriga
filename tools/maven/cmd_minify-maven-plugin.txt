@@ -1,0 +1,1 @@
+$ mvn install:install-file -DgroupId=com.samaxes.maven -DartifactId=minify-maven-plugin -Dversion=1.7.2 -Dpackaging=jar -Dfile=/usr/local/src/maven/plugins/minify-maven-plugin-1.7.2.jar
