@@ -17,12 +17,28 @@ describe('Testing modules', function () {
         });
     });
 
+    describe('urlDecode module:', function () {
+        var module;
+
+        beforeEach(function () {
+            module = angular.module('urlDecode');
+        });
+
+        it('should be registered', function () {
+            expect(module).not.toBe(null);
+        });
+
+        it('should have a decode controller', function () {
+            expect(module.decode).not.toBe(null);
+        });
+    });
+
     describe('thatjs twinTextarea directive:', function () {
         var $compile,
             $rootScope;
 
         // Load the thatjs module, which contains the directive
-        beforeEach(module('thatjs'));
+        beforeEach(module('urlDecode'));
 
         // Store references to $rootScope and $compile
         // so they are available to all tests in this describe block
@@ -33,11 +49,11 @@ describe('Testing modules', function () {
             }]
         ));
 
-        xit("...should display contact names", function () {
-            var element = $compile('<div ca-chat-header></div>')($rootScope);
+        it("should display two different textarea elements", function () {
+            var element = $compile('<div twin-textarea ng-controller="decode"></div>')($rootScope);
             // template is formatted correctly
-            expect(element.html()).toMatch(/nameList/i);
-            // console.info(element);
+            expect(element.html()).toMatch(/js-src/i);
+            expect(element.html()).toMatch(/js-test/i);
         });
 
     });
