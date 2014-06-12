@@ -17,10 +17,18 @@ angular.module('thatjs', ['urlDecode'])
 angular.module('urlDecode', [])
 
     .controller('decode', function ($scope) {
-        $scope.rawUrl = "http://localhost:8080/thatjs/odata/Person(id='826',group='12',role='6')?$filter=Status eq 'active'&$format=json";
+        $scope.decodedStr = "http://localhost:8080/thatjs/odata/Person(id='826',group='12',role='6')?$filter=Status eq 'active'&$format=json";
 
         $scope.update = function (event) {
-            console.info(event); // working
+            // console.info(event); // working
+        };
+
+        $scope.decode = function (str) {
+            $scope.encodedStr = str;
+        };
+
+        $scope.encode = function (str) {
+            $scope.decodedStr = str;
         };
 
         window.here = $scope;
@@ -35,9 +43,11 @@ angular.module('urlDecode', [])
             restrict: 'A',
             // require: 'ngModel',
             // controller: 'urlDecodeCtrl',
-            // adding ng-model, tryme does not render, data is first textbox echoes in second
-            template: '<textarea class="col-4 js-src" ng-keyup="update(event=$event)">{{rawUrl}}</textarea>' +
-                '<textarea class="col-4 js-src js-test" ng-keyup="update(event=$event)"></textarea>',
+            // ng-model, specify scope variable, which can be used as an argument passed to scope functions
+            template: '<textarea class="col-4 js-src" ng-keyup="update(event=$event)" ng-model="decodedStr">{{decodedStr}}</textarea>' +
+                '<textarea class="col-4 js-src js-test" ng-keyup="update(event=$event)" ng-model="encodedStr">{{encodedStr}}</textarea>' +
+                '<div class="textarea-btn-group"><button class="btn btn-primary" ng-click="encode(decodedStr)">encode</button>' +
+                '<button class="btn btn-secondary" ng-click="decode(encodedStr)">decode</button></div>',
 
             // require: ngModel makes the controll avaiable here
             // play nice with angular form controllers

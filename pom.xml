@@ -172,7 +172,7 @@
             <options>
                 <predef>angular,describe,it,xdescribe,xit,beforeEach,afterEach,expect</predef>
                 <browser>true</browser>
-                <maxlen>120</maxlen>
+                <maxlen>150</maxlen>
                 <todo>true</todo>  <!-- Allow 'todo' comments in code -->
                 <continue>true</continue>  <!-- allow use of continue in loops -->
                 <!-- To match recommended Eclipse settings in coding standards -->

@@ -1,0 +1,25 @@
+@import "../variables/common";
+
+@btn-height: 20px;
+@btn-value-width: 40px;
+@btn-button-width: 40px;
+@btn-border-width: 1px;
+@btn-bgcolor-primary: @base-color;
+@btn-bgcolor-secondary: darken(@base-color, 15);
+@btn-text-color: #eee;
+
+button {
+    &.btn.btn-primary {
+        background-color: @btn-bgcolor-primary;
+        color: @btn-text-color;
+    }
+
+    &.btn.btn-secondary {
+        background-color: @btn-bgcolor-secondary;
+        color: @btn-text-color;
+    } 
+}
+
+textarea-btn-group {
+    display: block;
+}
