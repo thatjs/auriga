@@ -1,0 +1,13 @@
+<java
+   dir="${exec.dir}"
+   jar="${exec.dir}/dist/test.jar"
+   fork="true"
+   failonerror="true"
+   maxmemory="128m"
+   >
+ <arg value="-h"/>
+ <classpath>
+   <pathelement location="dist/test.jar"/>
+   <pathelement path="${java.class.path}"/>
+ </classpath>
+</java>

@@ -187,7 +187,6 @@
                 <sourceFolder>src/test/js</sourceFolder>
             </sourceFolders>
             <excludes>
-                <exclude>lib/**/*.js</exclude>
                 <exclude>that.min.js</exclude>
             </excludes>
             <outputFolder>target/jslint</outputFolder>
