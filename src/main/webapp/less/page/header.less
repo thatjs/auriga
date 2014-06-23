@@ -1,8 +1,9 @@
 @import "../variables/common";
+@import "../mixins/background";
 
 .header {
 
-    background-color: lighten(@base-color, 10%);
-
+    .tj_background_gradient(top, lighten(@base-color, 10%), @base-color);
+    .tj_box_shadow(0, 0, 3px, 3px, rgba(0, 0, 0, 0.5));
 
 }

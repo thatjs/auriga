@@ -17,7 +17,10 @@ angular.module('thatjs', ['urlDecode'])
 angular.module('urlDecode', [])
 
     .controller('decode', function ($scope) {
-        $scope.decodedStr = "http://localhost:8080/thatjs/odata/Person(id='826',group='12',role='6')?$filter=Status eq 'active'&$format=json";
+
+        $scope.decodedStr = "http://localhost:8080/thatjs/odata/Person(id='826',group='12',role='6')?" +
+            "$filter=Status eq 'active'&$format=json";
+
 
         $scope.update = function (event) {
             // console.info(event); // working
