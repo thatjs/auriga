@@ -2,8 +2,8 @@
 // dev link /js/thatjs/main/app.js
 // prod /v1000/js/that.js - optimized, minified and compressed
 
-// declare module name and dependencies = none
-angular.module('thatjs', ['urlDecode'])
+// declare module name and dependencies
+angular.module('thatjs', ['urlDecode', 'quickNotes'])
 
     .controller('headerNavCtrl', function ($scope) {
         window.headerNav = $scope;
@@ -14,6 +14,36 @@ angular.module('thatjs', ['urlDecode'])
         ];
     });
 
+// quicknotes
+angular.module('quickNotes', [])
+
+    .controller('quicknotes', function ($scope) {
+
+        $scope.expression = {
+            command: 'git',
+            subcommand: 'commit',
+            flags: '-m',
+            args: '"Commit message"',
+            content: 'Commit the changes in the working directory to the local repository.'
+        };
+
+    })
+
+    .directive('quickNotes', function () {  //quick-notes
+
+        return {
+            restrict: 'A',
+            template: '<div class="quicknotes">' +
+                '<div class="cmd arg action">{{expression.command}}</div>' +
+                '<div class="arg action">{{expression.subcommand}}</div>' +
+                '<div class="arg action">{{expression.flags}}</div>' +
+                '<div class="arg">{{expression.args}}</div>' +
+                '<div class="content">{{expression.content}}</div>' +
+                '</div>'
+        };
+    });
+
+// urlDecode
 angular.module('urlDecode', [])
 
     .controller('decode', function ($scope) {
