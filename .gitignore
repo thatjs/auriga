@@ -2,5 +2,5 @@ node_modules/
 src/main/webapp/css/*
 target/*
 src/main/webapp/js/that.js
-src/main/webapp/js/that.min.js
+src/main/webapp/js/that-min.js
 src/main/webapp/js/ref/proangjs/
