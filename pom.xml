@@ -148,6 +148,7 @@
                 <exclude>lib/**/*.js</exclude>
                 <exclude>ref/**/*.js</exclude>
                 <exclude>**/*-min.js</exclude>
+                <exclude>that.js</exclude>
             </excludes>
             <outputFolder>target/jslint</outputFolder>
             <timeout>30</timeout>

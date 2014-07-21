@@ -1,4 +1,4 @@
-/*globals window */
+/*globals window, console */
 // dev link /js/thatjs/main/app.js
 // prod /v1000/js/that.js - optimized, minified and compressed
 
@@ -92,7 +92,8 @@ angular.module('quickNotes', [])
                 '<input type="text" size="6" ng-model="item.name" ng-model-options="{ updateOn: \'change\' }" placeholder="cmd" ng-required/>' +
                 '</form>' +
 
-                '<div ng-repeat-end class="arg{{getActionCls(item)}}" ng-hide="item.editing" ng-click="edit(item)" title="{{getTitle(item)}}">{{item.name}}</div>' +
+                '<div ng-repeat-end class="arg{{getActionCls(item)}}" ng-hide="item.editing" ng-click="edit(item)" ' +
+                    'title="{{getTitle(item)}}">{{item.name}}</div>' +
 
                 '<div class="content">{{expression.content}}</div>' +
 
@@ -101,19 +102,19 @@ angular.module('quickNotes', [])
     })
 
     // not working yet
-    .directive('cmdEditable', function() {
+    .directive('cmdEditable', function () {
         return {
             require: 'ngModel',
-            link: function(scope, elem, attrs, ctrl) {
+            link: function (scope, elem, attrs, ctrl) {
                 // view -> model
-                elem.on('blur', function() {
-                    scope.$apply(function() {
+                elem.on('blur', function () {
+                    scope.$apply(function () {
                         ctrl.$setViewValue(elem.html());
                     });
                 });
 
                 // model -> view
-                ctrl.$render = function() {
+                ctrl.$render = function () {
                     elem.html(ctrl.$viewValue);
                 };
 
