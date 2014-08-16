@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule api/v1/(.*)$ api/v1/api.php?request=$1 [QSA,NC,L]
+</IfModule>
+
+Include in root directory.
+
+Match if not a file or directory
+QSA - named capture appended to newly create uri
+NC - not case sensitive
+L - do not process additional rules after this match
