@@ -1,9 +1,35 @@
 @import "../variables/common";
 @import "../mixins/background";
 
-.header {
+header {
 
+	div {
+		margin-top: 4px;
+		margin-bottom: 6px;
+	}
+	
+	div.logo {
+		font-size: 1.5em;
+		font-family: Courier, serif;
+		/* font-weight: 500; */
+		color: darken(@base-color-white, 10%);
+	}
+
+	nav, div {
+		display: inline-block;
+		margin-left: 25px;
+	}
+
+	nav ul li {
+		display: inline-block;
+	}
+}
+
+.header {
     .tj_background_gradient(top, lighten(@base-color, 10%), @base-color);
     .tj_box_shadow(0, 0, 3px, 3px, rgba(0, 0, 0, 0.5));
-
 }
+
+
+
+    
