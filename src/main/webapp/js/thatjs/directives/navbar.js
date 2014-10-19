@@ -25,8 +25,8 @@ angular.module('thatjs', [])
 
                // below needs refactoring, explicit controller not needed
                // scoping for directive
-            template: '<ul ng-controller="headerNavCtrl">' +
-                '<li ng-repeat="item in headerNav">{{item.name}}</li>' +
+            template: '<ul class="global-nav" ng-controller="headerNavCtrl">' +
+                '<li ng-repeat="item in headerNav"><a href="{{item.name | lowercase}}">{{item.name}}</a></li>' +
                 '</ul>'
         };
     });

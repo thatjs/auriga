@@ -105,6 +105,7 @@
                     <output>${project.basedir}/src/main/webapp/js/out/that.js</output>
                     <includes>
                         <include>${project.basedir}/src/main/webapp/js/thatjs/main/app.js</include>
+                        <include>${project.basedir}/src/main/webapp/js/thatjs/main/routes.js</include>
 <!--                        <include>${project.basedir}/src/main/webapp/js/thatjs/services/services.js</include>-->
                         <include>${project.basedir}/src/main/webapp/js/thatjs/directives/navbar.js</include>
                         <include>${project.basedir}/src/main/webapp/js/thatjs/directives/quickNotes.js</include>
@@ -114,6 +115,7 @@
                     <output>${project.basedir}/src/main/webapp/js/out/that-min.js</output>
                     <includes>
                         <include>${target.finalName}/js/thatjs/main/app-min.js</include>
+                        <include>${target.finalName}/js/thatjs/main/routes-min.js</include>
 <!--                        <include>${target.finalName}/js/thatjs/services/services-min.js</include>-->
                         <include>${target.finalName}/js/thatjs/directives/navbar-min.js</include>
                         <include>${target.finalName}/js/thatjs/directives/quickNotes-min.js</include>
