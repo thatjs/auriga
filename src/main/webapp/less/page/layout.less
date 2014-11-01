@@ -1,6 +1,18 @@
 
 .row {
+    padding: 0 100px;
+}
 
+@media only screen and (max-width: 600px) {
+    .row {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .row {
+        padding: 0;
+    }
 }
 
 .row:after {
@@ -63,4 +75,3 @@
     visibility: hidden;
     zoom: 1
 }
-
