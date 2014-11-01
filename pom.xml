@@ -102,23 +102,23 @@
         	<aggregations>
         	    <aggregation>
                     <insertNewLine>true</insertNewLine>
-                    <output>${project.basedir}/src/main/webapp/js/out/that.js</output>
+                    <output>${project.basedir}/src/main/webapp/js/out/angular/that.js</output>
                     <includes>
-                        <include>${project.basedir}/src/main/webapp/js/thatjs/main/app.js</include>
-                        <include>${project.basedir}/src/main/webapp/js/thatjs/main/routes.js</include>
-<!--                        <include>${project.basedir}/src/main/webapp/js/thatjs/services/services.js</include>-->
-                        <include>${project.basedir}/src/main/webapp/js/thatjs/directives/navbar.js</include>
-                        <include>${project.basedir}/src/main/webapp/js/thatjs/directives/quickNotes.js</include>
+                        <include>${project.basedir}/src/main/webapp/js/thatjs/angular/main/app.js</include>
+                        <include>${project.basedir}/src/main/webapp/js/thatjs/angular/main/routes.js</include>
+<!--                        <include>${project.basedir}/src/main/webapp/js/thatjs/angular/services/services.js</include>-->
+                        <include>${project.basedir}/src/main/webapp/js/thatjs/angular/directives/navbar.js</include>
+                        <include>${project.basedir}/src/main/webapp/js/thatjs/angular/directives/quickNotes.js</include>
                     </includes>
         	    </aggregation>
         	    <aggregation>
-                    <output>${project.basedir}/src/main/webapp/js/out/that-min.js</output>
+                    <output>${project.basedir}/src/main/webapp/js/out/angular/that-min.js</output>
                     <includes>
-                        <include>${target.finalName}/js/thatjs/main/app-min.js</include>
-                        <include>${target.finalName}/js/thatjs/main/routes-min.js</include>
-<!--                        <include>${target.finalName}/js/thatjs/services/services-min.js</include>-->
-                        <include>${target.finalName}/js/thatjs/directives/navbar-min.js</include>
-                        <include>${target.finalName}/js/thatjs/directives/quickNotes-min.js</include>
+                        <include>${target.finalName}/js/thatjs/angular/main/app-min.js</include>
+                        <include>${target.finalName}/js/thatjs/angular/main/routes-min.js</include>
+<!--                        <include>${target.finalName}/js/thatjs/angular/services/services-min.js</include>-->
+                        <include>${target.finalName}/js/thatjs/angular/directives/navbar-min.js</include>
+                        <include>${target.finalName}/js/thatjs/angular/directives/quickNotes-min.js</include>
                     </includes>
         	    </aggregation>
         	    <aggregation>
