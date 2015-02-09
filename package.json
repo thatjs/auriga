@@ -1,8 +1,12 @@
 {
   "name": "Thatjs",
-  "description": "Thatjs Karma Test Runner",
+  "description": "Thatjs dev environment with Gulp & Karma Test Runner",
   "dependencies": {
     "gulp": "^3.8.10",
+    "gulp-util": "*",
+    "gulp-clean": "*",
+    "gulp-concat": "*",
+    "gulp-rename": "*",
 
     "karma": "*",
     "karma-jasmine": "*",
