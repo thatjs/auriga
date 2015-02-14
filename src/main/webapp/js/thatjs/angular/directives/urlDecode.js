@@ -10,9 +10,9 @@ angular.module('urlDecode', [])
             "$filter=Status eq 'active'&$format=json";
 
 
-        $scope.update = function (event) {
+        //$scope.update = function (event) {
             // console.info(event); // working
-        };
+        //};
 
         $scope.decode = function (str) {
             $scope.encodedStr = str;
@@ -40,14 +40,15 @@ angular.module('urlDecode', [])
             template: '<textarea class="col-4 js-src" ng-keyup="update(event=$event)" ng-model="decodedStr">{{decodedStr}}</textarea>' +
                 '<textarea class="col-4 js-src js-test" ng-keyup="update(event=$event)" ng-model="encodedStr">{{encodedStr}}</textarea>' +
                 '<div class="clearfix"><button class="btn btn-primary" ng-click="encode(decodedStr)">encode</button>' +
-                '<button class="btn btn-secondary" ng-click="decode(encodedStr)">decode</button></div>',
+                '<button class="btn btn-secondary" ng-click="decode(encodedStr)">decode</button></div>'
 
             // require: ngModel makes the controll avaiable here
             // play nice with angular form controllers
-            link: function (scope, element, attr) {
+
+            //link: function (scope, element, attr) {
                 // ngModel.$render = function () {
                 //     element.find('textarea .js-src').val(ngModel.$viewValue || 'not working yet');
                 // };
-            }
+            //}
         };
     });

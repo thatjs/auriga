@@ -2,15 +2,21 @@ var gulp = require('gulp'),
     gUtil = require('gulp-util'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
+    jslint = require('gulp-jslint'),
+    karma = require('gulp-karma'),
 
-    path = require('path'),
-    karma = require('karma');
+    path = require('path');
 
-//    karmaParseConfig = require('node_modules/karma/lib/config.js').parseConfig
 
 var webapp = 'src/main/webapp/',
     cssPath = webapp + 'css',
+    jsPath = webapp + 'js/thatjs/',
+    jsSrc = jsPath + '**/*.js',
     jsOutPath = webapp + 'js/out';
+
+
+var configJslint = require('./config/jslint');
+
 
 
 function runKarma(configFilePath, options, callback) {
@@ -37,6 +43,12 @@ gulp.task('clean', function () {
     return gulp
         .src(['target', cssPath, jsPath], { read: false})
         .pipe(clean());
+});
+
+gulp.task('lint', function () {
+    return gulp
+        .src(jsSrc)
+        .pipe(jslint(configJslint))
 });
 
 gulp.task('test', function (callback) {
