@@ -9,6 +9,7 @@
     "gulp-jslint": "*",
     "gulp-karma": "*",
     "gulp-rename": "*",
+    "gulp-uglify": "*",
 
     "karma": "*",
     "karma-jasmine": "*",

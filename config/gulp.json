@@ -11,6 +11,10 @@
         "todo": true,
         "unparam": true,
         "vars": true
+    },
+
+    "karma": {
+        "configFile": "karma.conf.js"
     }
 
 }
