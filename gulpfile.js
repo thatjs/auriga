@@ -15,7 +15,7 @@ var webapp = 'src/main/webapp/',
     jsOutPath = webapp + 'js/out';
 
 
-var configJslint = require('./config/jslint');
+var config = require('./config/gulp');
 
 
 
@@ -48,7 +48,7 @@ gulp.task('clean', function () {
 gulp.task('lint', function () {
     return gulp
         .src(jsSrc)
-        .pipe(jslint(configJslint))
+        .pipe(jslint(config.jslint))
 });
 
 gulp.task('test', function (callback) {
