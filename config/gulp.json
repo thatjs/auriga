@@ -1,4 +1,16 @@
 {
+    "assemble": [{
+        "angular": {
+            "outFile": "that.js",
+            "src": [
+                "main/app.js",
+                "main/routes.js",
+                "directives/navbar.js",
+                "directives/quickNotes.js"
+            ]
+        }
+    }],
+
     "jslint": {
         "predef": ["$","angular","describe","it","xdescribe","xit","beforeEach","afterEach","expect"],
         "browser": true,

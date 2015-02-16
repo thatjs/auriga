@@ -13,8 +13,10 @@ var gulp = require('gulp'),
 var webapp = 'src/main/webapp/',
     cssPath = webapp + 'css',
     jsPath = webapp + 'js/thatjs/',
-    jsSrc = jsPath + '**/*.js',
-    jsOutPath = webapp + 'js/out';
+    jsGlob = '**/*.js',
+    jsSrc = jsPath + jsGlob,
+    jsOutPath = webapp + 'js/out',
+    jsDest = 'target/build';
 
 
 var config = require('./config/gulp');
@@ -41,20 +43,53 @@ var config = require('./config/gulp');
 //    });
 //}
 
+function build(config, options, callback) {
 
-// not working yet
-//gulp.task('install', function () {
-//    return gulp.src(jsPath + 'angular/' + jsSrc)
-//        .pipe(concat('angular/that.js'))
-//        .pipe(gulp.dest(jsOutPath))
+    var src,
+        i,
+        len = config.length,
+        exit;
+
+    for (i = 0; i < len; i++) {
+
+
+        // test execution inside function
+        exit = gulp.src(jsPath + 'angular/**/*.js')
+            .pipe(concat('that.js'))
+            .pipe(gulp.dest(jsDest))
+            .pipe(uglify())
+            .pipe(rename({ extname: '.min.js'}))
+            .pipe(gulp.dest(jsDest));
+    }
+
+    gUtil.log('exit = ' + exit);
+}
+
+
+gulp.task('default', function() {
+  // place code for your default task here
+  gUtil.log(jsSrc);
+  gUtil.log(jsGlob);
+  gUtil.log(jsPath + 'angular/**/*.js');
+  gUtil.log(jsPath + 'angular/' + jsGlob);
+
+  gUtil.log('== default task executed ==');
+});
+
+
+gulp.task('install', function () {
+    build(config.assemble);
+//    return gulp.src(jsPath + 'angular/**/*.js')
+//        .pipe(concat('build/that.js'))
+//        .pipe(gulp.dest(jsDest))
 //        .pipe(uglify())
 //        .pipe(rename({ extname: '.min.js'}))
-//        .pipe(gulp.dest(jsOutPath));
-//
-//});
+//        .pipe(gulp.dest(jsDest));
+
+});
 
 gulp.task('clean', function () {
-    return gulp.src(['target', cssPath, jsPath], { read: false})
+    return gulp.src(['target', cssPath, jsOutPath], { read: false})
         .pipe(clean());
 });
 
@@ -90,7 +125,7 @@ gulp.task('tdd', function (callback) {
 //        .pipe(gulp.dest(jsOutPath + 'jquery/that.js'));
 //});
 
-gulp.task('default', function() {
-  // place code for your default task here
-  gUtil.log('== default task executed ==');
-});
+//gulp.task('default', function() {
+//  // place code for your default task here
+//  gUtil.log('== default task executed ==');
+//});
