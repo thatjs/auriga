@@ -7,14 +7,19 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
 
-    path = require('path');
+    merge = require('merge-stream'),
+
+    path2 = require('path');
 
 
 var webapp = 'src/main/webapp/',
-    cssPath = webapp + 'css',
-    jsPath = webapp + 'js/thatjs/',
-    jsGlob = '**/*.js',
-    jsSrc = jsPath + jsGlob,
+    path = {
+        css: webapp + 'css',
+        js: webapp + 'js/thatjs',
+
+    };
+
+var jsSrc = path.js + '/**/*.js',
     jsOutPath = webapp + 'js/out',
     jsDest = 'target/build';
 
@@ -22,74 +27,39 @@ var webapp = 'src/main/webapp/',
 var config = require('./config/gulp');
 
 
-
-//function runKarma(configFilePath, options, callback) {
-//
-//    configFilePath = path.resolve(configFilePath);
-//
-//    var server = karma.server,
-//        log = gUtil.log,
-//        colors = gUtil.colors,
-//        config = karmaParseConfig(configFilePath, {});
-//
-//    Object.keys(options).forEach(function (key) {
-//        config[key] = options[key];
-//    });
-//
-//    server.start(config, function (exitCode) {
-//        log('Karma has exited with ' + colors.red(exitCode));
-//        callback();
-//        process.exit(exitCode);
-//    });
-//}
-
-function build(config, options, callback) {
-
-    var src,
-        i,
-        len = config.length,
-        exit;
-
-    for (i = 0; i < len; i++) {
-
-
-        // test execution inside function
-        exit = gulp.src(jsPath + 'angular/**/*.js')
-            .pipe(concat('that.js'))
-            .pipe(gulp.dest(jsDest))
-            .pipe(uglify())
-            .pipe(rename({ extname: '.min.js'}))
-            .pipe(gulp.dest(jsDest));
-    }
-
-    gUtil.log('exit = ' + exit);
-}
-
-
-gulp.task('default', function() {
-  // place code for your default task here
-  gUtil.log(jsSrc);
-  gUtil.log(jsGlob);
-  gUtil.log(jsPath + 'angular/**/*.js');
-  gUtil.log(jsPath + 'angular/' + jsGlob);
-
-  gUtil.log('== default task executed ==');
-});
-
+// gulp public API
+// ===============
 
 gulp.task('install', function () {
-    build(config.assemble);
-//    return gulp.src(jsPath + 'angular/**/*.js')
-//        .pipe(concat('build/that.js'))
-//        .pipe(gulp.dest(jsDest))
-//        .pipe(uglify())
-//        .pipe(rename({ extname: '.min.js'}))
-//        .pipe(gulp.dest(jsDest));
+
+    var jQuerySrc = path.js + '/jquery/**/*.js',
+        angularSrc = path.js + '/angular/**/*.js',
+
+        jquery = gulp.src(jQuerySrc)
+            .pipe(concat('jquery-that.js'))
+            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(jsOutPath))
+            .pipe(uglify())
+            .pipe(rename({ extname: '.min.js'}))
+            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(jsOutPath)),
+
+        angular = gulp.src(angularSrc)
+            .pipe(concat('angular-that.js'))
+            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(jsOutPath))
+            .pipe(uglify())
+            .pipe(rename({ extname: '.min.js'}))
+            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(jsOutPath));
+
+
+    return merge(jquery, angular);
 
 });
 
 gulp.task('clean', function () {
-    return gulp.src(['target', cssPath, jsOutPath], { read: false})
+    return gulp.src(['target', path.css, jsOutPath], { read: false})
         .pipe(clean());
 });
 
@@ -119,6 +89,17 @@ gulp.task('tdd', function (callback) {
         }));
 });
 
+gulp.task('default', function() {
+  // place code for your default task here
+  gUtil.log(jsSrc);
+  gUtil.log(jsGlob);
+  gUtil.log(jsPath + 'angular/**/*.js');
+  gUtil.log(jsPath + 'angular/' + jsGlob);
+
+  gUtil.log('== default task executed ==');
+
+});
+
 //gulp.task('build', ['clean'], function () {
 //    return gulp.src(jsPath + 'thatjs/jquery/**/.js')
 //        .pipe(concat())
@@ -129,3 +110,23 @@ gulp.task('tdd', function (callback) {
 //  // place code for your default task here
 //  gUtil.log('== default task executed ==');
 //});
+
+//function runKarma(configFilePath, options, callback) {
+//
+//    configFilePath = path.resolve(configFilePath);
+//
+//    var server = karma.server,
+//        log = gUtil.log,
+//        colors = gUtil.colors,
+//        config = karmaParseConfig(configFilePath, {});
+//
+//    Object.keys(options).forEach(function (key) {
+//        config[key] = options[key];
+//    });
+//
+//    server.start(config, function (exitCode) {
+//        log('Karma has exited with ' + colors.red(exitCode));
+//        callback();
+//        process.exit(exitCode);
+//    });
+//}

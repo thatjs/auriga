@@ -10,7 +10,6 @@
     "gulp-karma": "*",
     "gulp-rename": "*",
     "gulp-uglify": "*",
-
     "karma": "*",
     "karma-jasmine": "*",
     "karma-chrome-launcher": "*",
@@ -23,5 +22,8 @@
   },
   "engines": {
     "node": "~0.8 || ~0.10"
+  },
+  "devDependencies": {
+    "merge-stream": "^0.1.7"
   }
 }
