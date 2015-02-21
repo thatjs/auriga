@@ -30,7 +30,7 @@ var config = require('./config/gulp');
 // gulp public API
 // ===============
 
-gulp.task('install', function () {
+gulp.task('install', ['lint'], function () {
 
     var jQuerySrc = path.js + '/jquery/**/*.js',
         angularSrc = path.js + '/angular/**/*.js',
