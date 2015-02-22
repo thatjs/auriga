@@ -1,27 +1,32 @@
-var gulp = require('gulp'),
+var pathn = require('path'),
+
+    gulp = require('gulp'),
     gUtil = require('gulp-util'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     jslint = require('gulp-jslint'),
+    less = require('gulp-less'),
     karma = require('gulp-karma'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
 
     merge = require('merge-stream'),
-
-    path2 = require('path');
+    browserSync = require('browser-sync');
 
 
 var webapp = 'src/main/webapp/',
     path = {
         css: webapp + 'css',
         js: webapp + 'js/thatjs',
+        less: webapp + 'less'
 
     };
 
 var jsSrc = path.js + '/**/*.js',
     jsOutPath = webapp + 'js/out',
-    jsDest = 'target/build';
+    buildDest = 'target/build',
+    lessSrc = path.less + '/**/*.less',
+    cssDest = path.css;
 
 
 var config = require('./config/gulp');
@@ -37,25 +42,40 @@ gulp.task('install', ['lint'], function () {
 
         jquery = gulp.src(jQuerySrc)
             .pipe(concat('jquery-that.js'))
-            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(buildDest))
             .pipe(gulp.dest(jsOutPath))
             .pipe(uglify())
             .pipe(rename({ extname: '.min.js'}))
-            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(buildDest))
             .pipe(gulp.dest(jsOutPath)),
 
         angular = gulp.src(angularSrc)
             .pipe(concat('angular-that.js'))
-            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(buildDest))
             .pipe(gulp.dest(jsOutPath))
             .pipe(uglify())
             .pipe(rename({ extname: '.min.js'}))
-            .pipe(gulp.dest(jsDest))
+            .pipe(gulp.dest(buildDest))
             .pipe(gulp.dest(jsOutPath));
 
 
     return merge(jquery, angular);
 
+});
+
+gulp.task('install-css', ['less'], function () {
+
+    var cssBuildSrc = buildDest + '/less/thatjs.css',
+        cssTarget = path.css;
+
+    return gulp.src(cssBuildSrc)
+        .pipe(gulp.dest(cssTarget));
+});
+
+gulp.task('less', function () {
+    return gulp.src(lessSrc)
+        .pipe(less())
+        .pipe(gulp.dest(buildDest + '/less'));
 });
 
 gulp.task('clean', function () {
@@ -66,6 +86,16 @@ gulp.task('clean', function () {
 gulp.task('lint', function () {
     return gulp.src(jsSrc)
         .pipe(jslint(config.jslint))
+});
+
+gulp.task('serve', function () {
+    browserSync({
+        server: './',
+        startPath: './src/main/webapp/index.html'
+    });
+
+    gulp.watch('./src/main/webapp/index.html')
+        .on('change', browserSync.reload);
 });
 
 gulp.task('test', function () {
