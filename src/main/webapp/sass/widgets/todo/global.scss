@@ -1,0 +1,8 @@
+@mixin todo-global {
+
+    body {
+        font-color: $td-font-color;
+        font-family: $td-font-family;
+        font-size: $td-font-size;
+    }
+}
